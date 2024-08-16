@@ -2,18 +2,23 @@
 #:set negroColor (0,0,0,1)
 #:set transparente (0,0,0,0)
 
-<BotonRedondo@Button>:
+<BotonRedondo>:
     canvas.before:
         Color:
-            rgba: blancoColor
+            rgba: self.color_fondo
         RoundedRectangle:
             pos: self.pos
             size: self.size
             radius: [15]
-    color: negro
-    #font_name: textFont
-    background_color: transparente
-    color: negroColor
+    color: self.color_texto
+    background_color: 1, 1, 1, 0  # Transparente para el fondo del botón
+
+#Este boton, por defecto crea un boton blanco sobre negro
+#sin embargo se puede personalizar con las siguientes especidicaciones:
+#BotonRedondo:
+#   text: "Spin"
+#   color_fondo: 1, 0, 0, 1  # Rojo
+#   color_texto: 1, 1, 1, 1  # Blanco 
 
 
 <MenuScreen>:
@@ -24,8 +29,8 @@
             pos: self.pos
             size: self.size
     BoxLayout:
-        spacing:root.width/25
-        padding:root.width/3,root.width/15,root.width/3,root.width/15
+        spacing:root.height/15
+        padding:root.width/3,root.height/10,root.width/3,root.height/5
         orientation:"vertical"
         Label:
             text:"Template-App"
@@ -34,19 +39,16 @@
             #font_name: textFont
         BotonRedondo:
             text: "App"
-            color: negroColor
             #font_name: textFont
             on_press:
                 root.manager.current = 'app'
         BotonRedondo:
             text: 'Ajustes'
-            color: negroColor
             #font_name: textFont
             on_press:
                 root.manager.current = 'ajustes'
         BotonRedondo:
             text: 'Salir'
-            color: negroColor
             #font_name: textFont
             on_press: quit()
 

@@ -4,6 +4,7 @@ from kivy.app import App
 from kivy.uix.screenmanager import (ScreenManager,
         Screen, RiseInTransition)
 from kivy.uix.button import Button
+from kivy.properties import ListProperty
 from kivy.properties import NumericProperty, StringProperty
 from kivy.core.audio import SoundLoader
 from kivy.clock import Clock
@@ -13,8 +14,10 @@ import random
 
 kivy.require('1.9.1')
 
+
 class BotonRedondo(Button):
-    pass
+    color_fondo = ListProperty([1, 1, 1, 1])  # Color de fondo, por defecto blanco
+    color_texto = ListProperty([0, 0, 0, 1])  # Color del texto, por defecto negro
 
 class MenuScreen(Screen):
     def __init__(self, **kwargs):
